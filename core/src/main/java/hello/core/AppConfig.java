@@ -25,6 +25,9 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class AppConfig {
 
+    /*
+    의존관계를 설정한다.
+     */
     @Bean
     public MemberService memberService() {
         return new MemberServiceImpl(memberRepository()); //생성자 주입으로 dip를 지켰다.
