@@ -185,6 +185,20 @@ ApplicationContext가 제공하는 부가기능
 * 공유필드는 조심해야한다. 스프링 빈은 항상 무상태로 설계하자!
 
 
+## @Configuration과 싱글톤
+AppConfig를 보면  
+memberService와 orderService에서 memberRepository()를 호출한다.  
+이 메서드를 호출하면 new MemoryMemberRepository()를 호출한다.
+ 
+결과적으로 각각 다른 2개의 MemoryMemberRepository가 생성되면서 싱글톤이 깨지는 것 처럼 보인다.  
+스프링 컨테이너는 이 문제를 어떻게 해결할까?
+
+확인해보면 memberRepository 인스턴스는 모두 같은 인스턴스가 공유되어 사용된다.
+AppConfig의 자바 코드를 보면 분명히 각각 2번 new MemoryMemberRepository를 호출해서 다른 인스턴스가 생성되어야 하는데  
+어떻게 된 일일까?
+
+
+
 
 
 

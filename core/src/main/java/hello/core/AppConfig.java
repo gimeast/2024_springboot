@@ -35,6 +35,7 @@ public class AppConfig {
 
     @Bean
     public MemberRepository memberRepository() {
+        System.out.println("==========call============"); //한번만 호출된다..
         return new MemoryMemberRepository();
     }
 
