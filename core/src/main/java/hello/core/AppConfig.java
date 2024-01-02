@@ -22,7 +22,7 @@ import org.springframework.context.annotation.Configuration;
  * DATE       |     Author      |       NOTE
  * 23. 12. 27.       donguk              최초 생성
  */
-@Configuration
+@Configuration //@Configuration을 붙이면 CGLIB 기술을 사용해서 싱글톤을 보장하지만 @Configuration을 붙이지 않으면 스프링 컨테이너가 관리하지 않게 되고 싱글톤이 적용되지 않는다.
 public class AppConfig {
 
     /*

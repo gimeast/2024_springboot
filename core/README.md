@@ -197,6 +197,10 @@ memberService와 orderService에서 memberRepository()를 호출한다.
 AppConfig의 자바 코드를 보면 분명히 각각 2번 new MemoryMemberRepository를 호출해서 다른 인스턴스가 생성되어야 하는데  
 어떻게 된 일일까?
 
+* @Configuration을 작성하지 않으면 @Bean만 사용해도 스프링 빈으로 등록되지만, 싱글톤을 보장하지 않는다.
+  * 스프링 컨텍스트에 해당 클래스가 빈 설정 정보를 포함하고있음을 알려주므로 싱글톤으로 관리되지 않는다.
+  * memberRepository() 처럼 의존관계 주입이 필요해서 메서드를 직접 호출할 때 싱글톤을 보장하지 않는다.
+* 크게 고민할것없이 스프링 설정 정보는 항상 @Configuration을 사용하자
 
 
 
