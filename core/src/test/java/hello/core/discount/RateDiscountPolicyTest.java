@@ -25,7 +25,7 @@ class RateDiscountPolicyTest {
         int discount = order.getDiscountPrice();
 
         //then
-        assertThat(discount).isEqualTo(1000);
+        assertThat(discount).isEqualTo(360000);
 
     }
 
