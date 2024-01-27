@@ -319,9 +319,20 @@ AppConfig의 자바 코드를 보면 분명히 각각 2번 new MemoryMemberRepos
 `@PreDestory`같은 종료 메서드가 호출되지 않는다.
 
 
-## 프로토타입 스코프 - 싱글톤 빈과 함께 사용시 문제점
+### 프로토타입 스코프 - 싱글톤 빈과 함께 사용시 문제점
 스프링 컨테이너에 프로토타입 스코프의 빈을 요청하면 항상 새로운 객체 인스턴스를 생성해서 반환한다.
 하지만 싱글톤 빈과 함께 사용할때는 의도한 대로 동작하지 않으므로 주의해야 한다.
 싱글톤빈 안에 프로토타입 빈을 주입받으면 싱글톤빈에 의해 관리되므로 싱글톤 빈 안에 있는 프로토타입 빈은 값을 유지한다.
 이것은 의도한대로 작동되는것이 아니다.
 왜냐하면 프로토타입 빈은 사용할때마다 새로 생성해서 사용하기 위한것 이므로
+
+
+### 웹 환경 추가
+- implementation 'org.springframework.boot:spring-boot-starter-web'
+실행 로그 : o.s.b.w.e.tomcat.TomcatWebServer -- Tomcat initialized with port 8080 (http)
+
+`spring-boot-starter-web` 라이브러리를 추가하면 스프링 부트는 내장 톰켓 서버를 활용해서 웹 서버와 스프링을 함께 실행시킨다.
+스프링 부트는 웹 라이브러리가 없으면 `AnnotationConfigApplicationContext`를 기반으로 애플리케이션을 구동한다.
+웹 라이브러리가 추가되면 웹과 관련된 추가 설정과 환경들이 필요하므로
+`AnnotationConfigServletWebServerApplicationContext`를 기반으로 애플리케이션을 구동한다.
+
