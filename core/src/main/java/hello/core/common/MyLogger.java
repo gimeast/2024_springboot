@@ -4,12 +4,13 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import lombok.Setter;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
 @Component
-@Scope("request")
+@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS) //proxyMode를 적용하면 프록시 객체가 생성된다.
 public class MyLogger {
 
     private String uuid;
