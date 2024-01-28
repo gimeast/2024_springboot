@@ -23,8 +23,10 @@ public class LogDemoController {
 
 //        myLogger.setRequestURL(requestURL);
 //        myLogger.log("controller test");
-        myLoggerProvider.get().setRequestURL(requestURL);
-        myLoggerProvider.get().log("controller test");
+
+        MyLogger myLogger = myLoggerProvider.get();
+        myLogger.setRequestURL(requestURL);
+        myLogger.log("controller test");
 
         logDemoService.logic("testId");
 
